@@ -12,7 +12,7 @@ namespace WindowsFormsElectrovozs
 {
     public partial class FormElectrovoz : Form
     {
-        private Electrovoz electrvoz;
+        private ITransport train;
         public FormElectrovoz()
         {
             InitializeComponent();
@@ -22,18 +22,30 @@ namespace WindowsFormsElectrovozs
         {
             Bitmap bmp = new Bitmap(pictureBoxTrains.Width, pictureBoxTrains.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            electrvoz.DrawTransport(gr);
+            train.DrawTransport(gr);
             pictureBoxTrains.Image = bmp;
         }
-        // Обработка нажатия кнопки "Создать"
-        private void buttonCreate_Click(object sender, EventArgs e)
+        // Обработка нажатия кнопки "Создать локомотив"
+        private void buttonCreateLocomotive_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            train = new Locomotive(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green);
+            train.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrains.Width,
+           pictureBoxTrains.Height);
+            Draw();
+        }
+        // Обработка нажатия кнопки "Создать электровоз"
+        private void buttonCreateElectrovoz_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             if (ComboBoxRoga.SelectedIndex > -1)
             {
-                electrvoz = new Electrovoz(rnd.Next(100, 300), rnd.Next(1000, 2000), Convert.ToInt32(ComboBoxRoga.SelectedItem),
-                    Color.Green, Color.Yellow, true, true);
-                electrvoz.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrains.Width, pictureBoxTrains.Height);
+                train = new Electrovoz(rnd.Next(100, 300), rnd.Next(1000, 2000), Convert.ToInt32(ComboBoxRoga.SelectedItem),
+                    Color.Green, Color.Yellow, FormaRogov(), true, true);
+                train.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxTrains.Width, pictureBoxTrains.Height);
+                buttonSecondForm.Enabled = true;
+                buttonFirstForm.Enabled = true;
+                buttonThirdForm.Enabled = true;
                 Draw();
             }
             else
@@ -49,19 +61,52 @@ namespace WindowsFormsElectrovozs
             switch (name)
             {
                 case "buttonUp":
-                    electrvoz.MoveTransport(Direction.Up);
+                    train.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    electrvoz.MoveTransport(Direction.Down);
+                    train.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    electrvoz.MoveTransport(Direction.Left);
+                    train.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    electrvoz.MoveTransport(Direction.Right);
+                    train.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
+        }
+        private void buttonRogaForm_Click(object sender, EventArgs e)
+        {
+            if (sender == buttonFirstForm)
+            {
+                buttonSecondForm.Enabled = false;
+                buttonThirdForm.Enabled = false;
+            }
+            else if (sender == buttonSecondForm)
+            {
+                buttonFirstForm.Enabled = false;
+                buttonThirdForm.Enabled = false;
+            }
+            else
+            {
+                buttonFirstForm.Enabled = false;
+                buttonSecondForm.Enabled = false;
+            }
+        }
+        private int FormaRogov()
+        {
+            if (buttonFirstForm.Enabled == true)
+            {
+                return 0;
+            }
+            else if (buttonSecondForm.Enabled == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
     }
 }

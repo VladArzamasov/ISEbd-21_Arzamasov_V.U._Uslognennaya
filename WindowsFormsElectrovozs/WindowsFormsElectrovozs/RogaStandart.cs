@@ -7,38 +7,30 @@ using System.Drawing;
 
 namespace WindowsFormsElectrovozs
 {
-    public class Roga
+    class RogaStandart : InterDop
     {
-        private DopPerechisl countRoga;
-        public int CountRoga
-        {
-            set
-            {
-                if (value == 1)
-                {
-                    countRoga = DopPerechisl.one;
-                }
-                if (value == 2)
-                {
-                    countRoga = DopPerechisl.two;
-                }
-                if (value == 3)
-                {
-                    countRoga = DopPerechisl.three;
-                }
-            }
-        }
-        public void DrawRoga(Graphics g, float Posx, float Posy, Color dopColor)
-        {
-            for(int i = 0; i < (int)countRoga; i++)
-            {
-                DrawRog(g, Posx + 25 * i, Posy, dopColor);
-            }
+        private DopPerechisl _countRoga;
 
-        }
-        private void DrawRog(Graphics g, float _startPosX, float _startPosY, Color _dopColor)
+        public int Number { set => _countRoga = (DopPerechisl)value; }
+
+        public Color DopColor { private set; get; }
+
+        public RogaStandart(int roga, Color dopColor)
         {
-            Pen roga = new Pen(_dopColor, 2);
+            Number = roga;
+            DopColor = dopColor;
+        }
+
+        public void DrawRoga(Graphics g, float Pozx, float Pozy)
+        {
+            for (int i = 0; i < (int)_countRoga; i++)
+            {
+                DrawRog(g, Pozx + 25 * i, Pozy);
+            }
+        }
+        private void DrawRog(Graphics g, float _startPosX, float _startPosY)
+        {
+            Pen roga = new Pen(DopColor, 2);
             g.DrawLine(roga, _startPosX + 5, _startPosY + 17, _startPosX + 10, _startPosY + 7);
             g.DrawLine(roga, _startPosX + 15, _startPosY + 17, _startPosX + 10, _startPosY + 7);
             g.DrawLine(roga, _startPosX + 5, _startPosY + 4, _startPosX + 10, _startPosY + 7);

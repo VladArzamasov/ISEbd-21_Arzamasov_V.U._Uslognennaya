@@ -55,9 +55,15 @@
     <Compile Include="FormElectrovoz.Designer.cs">
       <DependentUpon>FormElectrovoz.cs</DependentUpon>
     </Compile>
+    <Compile Include="InterDop.cs" />
+    <Compile Include="ITransport.cs" />
+    <Compile Include="Locomotive.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roga.cs" />
+    <Compile Include="RogaStandart.cs" />
+    <Compile Include="RogaXstyle.cs" />
+    <Compile Include="RogaYstyle.cs" />
+    <Compile Include="Train.cs" />
     <EmbeddedResource Include="FormElectrovoz.resx">
       <DependentUpon>FormElectrovoz.cs</DependentUpon>
     </EmbeddedResource>

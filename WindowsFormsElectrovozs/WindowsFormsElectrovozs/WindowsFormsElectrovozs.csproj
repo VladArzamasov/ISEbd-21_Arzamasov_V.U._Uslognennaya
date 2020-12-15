@@ -46,9 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Depo.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="DopPerechisl.cs" />
     <Compile Include="Electrovoz.cs" />
+    <Compile Include="FormDepo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDepo.Designer.cs">
+      <DependentUpon>FormDepo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormElectrovoz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +71,9 @@
     <Compile Include="RogaXstyle.cs" />
     <Compile Include="RogaYstyle.cs" />
     <Compile Include="Train.cs" />
+    <EmbeddedResource Include="FormDepo.resx">
+      <DependentUpon>FormDepo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormElectrovoz.resx">
       <DependentUpon>FormElectrovoz.cs</DependentUpon>
     </EmbeddedResource>

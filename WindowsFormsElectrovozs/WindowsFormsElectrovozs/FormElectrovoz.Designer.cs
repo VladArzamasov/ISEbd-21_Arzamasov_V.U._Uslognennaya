@@ -33,12 +33,6 @@
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.pictureBoxTrains = new System.Windows.Forms.PictureBox();
-            this.ComboBoxRoga = new System.Windows.Forms.ComboBox();
-            this.buttonCreateLocomotive = new System.Windows.Forms.Button();
-            this.buttonCreateElectrovoz = new System.Windows.Forms.Button();
-            this.buttonFirstForm = new System.Windows.Forms.Button();
-            this.buttonSecondForm = new System.Windows.Forms.Button();
-            this.buttonThirdForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrains)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,82 +92,12 @@
             this.pictureBoxTrains.Size = new System.Drawing.Size(878, 444);
             this.pictureBoxTrains.TabIndex = 0;
             this.pictureBoxTrains.TabStop = false;
-            this.pictureBoxTrains.Click += new System.EventHandler(this.buttonCreateLocomotive_Click);
-            // 
-            // ComboBoxRoga
-            // 
-            this.ComboBoxRoga.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxRoga.FormattingEnabled = true;
-            this.ComboBoxRoga.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.ComboBoxRoga.Location = new System.Drawing.Point(745, 48);
-            this.ComboBoxRoga.Name = "ComboBoxRoga";
-            this.ComboBoxRoga.Size = new System.Drawing.Size(121, 28);
-            this.ComboBoxRoga.TabIndex = 6;
-            // 
-            // buttonCreateLocomotive
-            // 
-            this.buttonCreateLocomotive.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreateLocomotive.Name = "buttonCreateLocomotive";
-            this.buttonCreateLocomotive.Size = new System.Drawing.Size(176, 34);
-            this.buttonCreateLocomotive.TabIndex = 7;
-            this.buttonCreateLocomotive.Text = "Создать локомотив";
-            this.buttonCreateLocomotive.UseVisualStyleBackColor = true;
-            this.buttonCreateLocomotive.Click += new System.EventHandler(this.buttonCreateLocomotive_Click);
-            // 
-            // buttonCreateElectrovoz
-            // 
-            this.buttonCreateElectrovoz.Location = new System.Drawing.Point(194, 12);
-            this.buttonCreateElectrovoz.Name = "buttonCreateElectrovoz";
-            this.buttonCreateElectrovoz.Size = new System.Drawing.Size(184, 34);
-            this.buttonCreateElectrovoz.TabIndex = 8;
-            this.buttonCreateElectrovoz.Text = "Создать электровоз";
-            this.buttonCreateElectrovoz.UseVisualStyleBackColor = true;
-            this.buttonCreateElectrovoz.Click += new System.EventHandler(this.buttonCreateElectrovoz_Click);
-            // 
-            // buttonFirstForm
-            // 
-            this.buttonFirstForm.Location = new System.Drawing.Point(745, 82);
-            this.buttonFirstForm.Name = "buttonFirstForm";
-            this.buttonFirstForm.Size = new System.Drawing.Size(121, 32);
-            this.buttonFirstForm.TabIndex = 9;
-            this.buttonFirstForm.Text = "1 форма рога";
-            this.buttonFirstForm.UseVisualStyleBackColor = true;
-            this.buttonFirstForm.Click += new System.EventHandler(this.buttonRogaForm_Click);
-            // 
-            // buttonSecondForm
-            // 
-            this.buttonSecondForm.Location = new System.Drawing.Point(745, 120);
-            this.buttonSecondForm.Name = "buttonSecondForm";
-            this.buttonSecondForm.Size = new System.Drawing.Size(121, 32);
-            this.buttonSecondForm.TabIndex = 10;
-            this.buttonSecondForm.Text = "2 форма рога";
-            this.buttonSecondForm.UseVisualStyleBackColor = true;
-            this.buttonSecondForm.Click += new System.EventHandler(this.buttonRogaForm_Click);
-            // 
-            // buttonThirdForm
-            // 
-            this.buttonThirdForm.Location = new System.Drawing.Point(745, 158);
-            this.buttonThirdForm.Name = "buttonThirdForm";
-            this.buttonThirdForm.Size = new System.Drawing.Size(121, 32);
-            this.buttonThirdForm.TabIndex = 11;
-            this.buttonThirdForm.Text = "3 форма рога";
-            this.buttonThirdForm.UseVisualStyleBackColor = true;
-            this.buttonThirdForm.Click += new System.EventHandler(this.buttonRogaForm_Click);
             // 
             // FormElectrovoz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 444);
-            this.Controls.Add(this.buttonThirdForm);
-            this.Controls.Add(this.buttonSecondForm);
-            this.Controls.Add(this.buttonFirstForm);
-            this.Controls.Add(this.buttonCreateElectrovoz);
-            this.Controls.Add(this.buttonCreateLocomotive);
-            this.Controls.Add(this.ComboBoxRoga);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
@@ -194,12 +118,6 @@
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
-        private System.Windows.Forms.ComboBox ComboBoxRoga;
-        private System.Windows.Forms.Button buttonCreateLocomotive;
-        private System.Windows.Forms.Button buttonCreateElectrovoz;
-        private System.Windows.Forms.Button buttonFirstForm;
-        private System.Windows.Forms.Button buttonSecondForm;
-        private System.Windows.Forms.Button buttonThirdForm;
     }
 }
 

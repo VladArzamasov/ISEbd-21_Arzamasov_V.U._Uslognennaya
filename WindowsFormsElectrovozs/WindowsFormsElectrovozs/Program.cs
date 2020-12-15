@@ -16,7 +16,7 @@ namespace WindowsFormsElectrovozs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormElectrovoz());
+            Application.Run(new FormDepo());
         }
     }
 }

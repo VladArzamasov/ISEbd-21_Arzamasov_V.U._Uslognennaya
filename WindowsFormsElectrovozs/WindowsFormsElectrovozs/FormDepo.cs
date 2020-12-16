@@ -13,20 +13,44 @@ namespace WindowsFormsElectrovozs
     public partial class FormDepo : Form
     {
         // Объект от класса-депо
-        private readonly Depo<Locomotive, RogaStandart> depo;
+        private readonly DepoCollection depoCollection;
+        public LinkedList<Train> trains = new LinkedList<Train>();
         public FormDepo()
         {
             InitializeComponent();
-            depo = new Depo<Locomotive, RogaStandart>(pictureBoxDepo.Width, pictureBoxDepo.Height);
+            depoCollection = new DepoCollection(pictureBoxDepo.Width, pictureBoxDepo.Height);
             Draw();
+        }
+        // Заполнение listBoxLevels
+        private void ReloadLevels()
+        {
+            int index = ListBoxDepo.SelectedIndex;
+            ListBoxDepo.Items.Clear();
+            for (int i = 0; i < depoCollection.Keys.Count; i++)
+            {
+                ListBoxDepo.Items.Add(depoCollection.Keys[i]);
+            }
+            if (ListBoxDepo.Items.Count > 0 && (index == -1 || index >=
+           ListBoxDepo.Items.Count))
+            {
+                ListBoxDepo.SelectedIndex = 0;
+            }
+            else if (ListBoxDepo.Items.Count > 0 && index > -1 && index <
+           ListBoxDepo.Items.Count)
+            {
+                ListBoxDepo.SelectedIndex = index;
+            }
         }
         // Метод отрисовки депо
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxDepo.Width, pictureBoxDepo.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            depo.Draw(gr);
-            pictureBoxDepo.Image = bmp;
+            if (ListBoxDepo.SelectedIndex > -1)
+            {
+                Bitmap bmp = new Bitmap(pictureBoxDepo.Width, pictureBoxDepo.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                depoCollection[ListBoxDepo.SelectedItem.ToString()].Draw(gr);
+                pictureBoxDepo.Image = bmp;
+            }
         }
         // Обработка нажатия кнопки "Припарковать локомотив"
         private void buttonParkingLocomotive_Click(object sender, EventArgs e)
@@ -35,7 +59,7 @@ namespace WindowsFormsElectrovozs
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var locomotiv = new Locomotive(100, 1000, dialog.Color);
-                if (depo + locomotiv)
+                if (depoCollection[ListBoxDepo.SelectedItem.ToString()] + locomotiv)
                 {
                     Draw();
                 }
@@ -58,7 +82,7 @@ namespace WindowsFormsElectrovozs
                     buttonSecondForm.Enabled = true;
                     buttonFirstForm.Enabled = true;
                     buttonThirdForm.Enabled = true;
-                    if (depo + train)
+                    if (depoCollection[ListBoxDepo.SelectedItem.ToString()] + train)
                     {
                         Draw();
                     }
@@ -72,16 +96,28 @@ namespace WindowsFormsElectrovozs
         // Обработка нажатия кнопки "Забрать"
         private void buttonZobr_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxPlace.Text != "")
+            if (ListBoxDepo.SelectedIndex > -1 && maskedTextBoxPlace.Text != "")
             {
-                var train = depo - Convert.ToInt32(maskedTextBoxPlace.Text);
+                var train = depoCollection[ListBoxDepo.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxPlace.Text);
                 if (train != null)
                 {
-                    FormElectrovoz form = new FormElectrovoz();
-                    form.SetTrain(train);
-                    form.ShowDialog();
+                    trains.AddFirst(train);
                 }
                 Draw();
+            }
+        }
+        private void buttonTrainsCheck_Click(object sender, EventArgs e)
+        {
+            if (trains.Count > 0)
+            {
+                FormElectrovoz form = new FormElectrovoz();
+                form.SetTrain(trains.First.Value);
+                trains.RemoveFirst();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Выберите поезд");
             }
         }
         private void buttonRogaForm_Click(object sender, EventArgs e)
@@ -122,15 +158,44 @@ namespace WindowsFormsElectrovozs
             if (maskedTextBoxCompareForSimilarity.Text != "")
             {
                 int index = Convert.ToInt32(maskedTextBoxCompareForSimilarity.Text);
-                if (depo == index)
+                if (depoCollection[ListBoxDepo.SelectedItem.ToString()] == index)
                 {
                     MessageBox.Show("Свободных мест в депо = " + index);
                 }
-                else if (depo != index)
+                else if (depoCollection[ListBoxDepo.SelectedItem.ToString()] != index)
                 {
                     MessageBox.Show("Свободных мест в депо не " + index);
                 }
             }
+        }
+        // Обработка нажатия кнопки "Добавить депо"
+        private void buttonDobavlDepo_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNameDepo.Text))
+            {
+                MessageBox.Show("Введите название депо", "Ошибка",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            depoCollection.AddDepo(textBoxNameDepo.Text);
+            ReloadLevels();
+        }
+        // Обработка нажатия кнопки "Удалить депо"
+        private void buttonUdalDepo_Click(object sender, EventArgs e)
+        {
+            if (ListBoxDepo.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить депо { ListBoxDepo.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    depoCollection.DelDepo(ListBoxDepo.Text);
+                    ReloadLevels();
+                }
+            }
+        }
+        // Метод обработки выбора элемента на listBox
+        private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
         }
     }
 }

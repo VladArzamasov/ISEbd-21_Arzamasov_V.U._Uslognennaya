@@ -41,6 +41,12 @@
             this.buttonThirdForm = new System.Windows.Forms.Button();
             this.maskedTextBoxCompareForSimilarity = new System.Windows.Forms.MaskedTextBox();
             this.buttonSvobodMesta = new System.Windows.Forms.Button();
+            this.labelDepo = new System.Windows.Forms.Label();
+            this.textBoxNameDepo = new System.Windows.Forms.TextBox();
+            this.buttonDobavlDepo = new System.Windows.Forms.Button();
+            this.ListBoxDepo = new System.Windows.Forms.ListBox();
+            this.buttonUdalDepo = new System.Windows.Forms.Button();
+            this.buttonTrainsCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDepo)).BeginInit();
             this.groupBoxPlace.SuspendLayout();
             this.SuspendLayout();
@@ -157,26 +163,88 @@
             // 
             // maskedTextBoxCompareForSimilarity
             // 
-            this.maskedTextBoxCompareForSimilarity.Location = new System.Drawing.Point(647, 426);
+            this.maskedTextBoxCompareForSimilarity.Location = new System.Drawing.Point(827, 347);
             this.maskedTextBoxCompareForSimilarity.Name = "maskedTextBoxCompareForSimilarity";
             this.maskedTextBoxCompareForSimilarity.Size = new System.Drawing.Size(33, 26);
             this.maskedTextBoxCompareForSimilarity.TabIndex = 13;
             // 
             // buttonSvobodMesta
             // 
-            this.buttonSvobodMesta.Location = new System.Drawing.Point(688, 420);
+            this.buttonSvobodMesta.Location = new System.Drawing.Point(866, 341);
             this.buttonSvobodMesta.Name = "buttonSvobodMesta";
-            this.buttonSvobodMesta.Size = new System.Drawing.Size(108, 39);
+            this.buttonSvobodMesta.Size = new System.Drawing.Size(116, 39);
             this.buttonSvobodMesta.TabIndex = 14;
             this.buttonSvobodMesta.Text = "Проверить";
             this.buttonSvobodMesta.UseVisualStyleBackColor = true;
             this.buttonSvobodMesta.Click += new System.EventHandler(this.buttonSvobodMesta_Click);
             // 
+            // labelDepo
+            // 
+            this.labelDepo.AutoSize = true;
+            this.labelDepo.Location = new System.Drawing.Point(880, 18);
+            this.labelDepo.Name = "labelDepo";
+            this.labelDepo.Size = new System.Drawing.Size(52, 20);
+            this.labelDepo.TabIndex = 15;
+            this.labelDepo.Text = "Депо:";
+            // 
+            // textBoxNameDepo
+            // 
+            this.textBoxNameDepo.Location = new System.Drawing.Point(827, 41);
+            this.textBoxNameDepo.Name = "textBoxNameDepo";
+            this.textBoxNameDepo.Size = new System.Drawing.Size(155, 26);
+            this.textBoxNameDepo.TabIndex = 16;
+            // 
+            // buttonDobavlDepo
+            // 
+            this.buttonDobavlDepo.Location = new System.Drawing.Point(827, 73);
+            this.buttonDobavlDepo.Name = "buttonDobavlDepo";
+            this.buttonDobavlDepo.Size = new System.Drawing.Size(155, 34);
+            this.buttonDobavlDepo.TabIndex = 17;
+            this.buttonDobavlDepo.Text = "Добавить депо";
+            this.buttonDobavlDepo.UseVisualStyleBackColor = true;
+            this.buttonDobavlDepo.Click += new System.EventHandler(this.buttonDobavlDepo_Click);
+            // 
+            // ListBoxDepo
+            // 
+            this.ListBoxDepo.FormattingEnabled = true;
+            this.ListBoxDepo.ItemHeight = 20;
+            this.ListBoxDepo.Location = new System.Drawing.Point(827, 125);
+            this.ListBoxDepo.Name = "ListBoxDepo";
+            this.ListBoxDepo.Size = new System.Drawing.Size(155, 144);
+            this.ListBoxDepo.TabIndex = 18;
+            this.ListBoxDepo.SelectedIndexChanged += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
+            // 
+            // buttonUdalDepo
+            // 
+            this.buttonUdalDepo.Location = new System.Drawing.Point(827, 287);
+            this.buttonUdalDepo.Name = "buttonUdalDepo";
+            this.buttonUdalDepo.Size = new System.Drawing.Size(155, 36);
+            this.buttonUdalDepo.TabIndex = 19;
+            this.buttonUdalDepo.Text = "Удалить депо";
+            this.buttonUdalDepo.UseVisualStyleBackColor = true;
+            this.buttonUdalDepo.Click += new System.EventHandler(this.buttonUdalDepo_Click);
+            // 
+            // buttonTrainsCheck
+            // 
+            this.buttonTrainsCheck.Location = new System.Drawing.Point(827, 401);
+            this.buttonTrainsCheck.Name = "buttonTrainsCheck";
+            this.buttonTrainsCheck.Size = new System.Drawing.Size(155, 39);
+            this.buttonTrainsCheck.TabIndex = 20;
+            this.buttonTrainsCheck.Text = "button1";
+            this.buttonTrainsCheck.UseVisualStyleBackColor = true;
+            this.buttonTrainsCheck.Click += new System.EventHandler(this.buttonTrainsCheck_Click);
+            // 
             // FormDepo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 502);
+            this.ClientSize = new System.Drawing.Size(994, 502);
+            this.Controls.Add(this.buttonTrainsCheck);
+            this.Controls.Add(this.buttonUdalDepo);
+            this.Controls.Add(this.ListBoxDepo);
+            this.Controls.Add(this.buttonDobavlDepo);
+            this.Controls.Add(this.textBoxNameDepo);
+            this.Controls.Add(this.labelDepo);
             this.Controls.Add(this.buttonSvobodMesta);
             this.Controls.Add(this.maskedTextBoxCompareForSimilarity);
             this.Controls.Add(this.buttonThirdForm);
@@ -212,5 +280,11 @@
         private System.Windows.Forms.Button buttonThirdForm;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCompareForSimilarity;
         private System.Windows.Forms.Button buttonSvobodMesta;
+        private System.Windows.Forms.Label labelDepo;
+        private System.Windows.Forms.TextBox textBoxNameDepo;
+        private System.Windows.Forms.Button buttonDobavlDepo;
+        private System.Windows.Forms.ListBox ListBoxDepo;
+        private System.Windows.Forms.Button buttonUdalDepo;
+        private System.Windows.Forms.Button buttonTrainsCheck;
     }
 }

@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsElectrovozs
 {
-    class RogaStandart : InterDop
+    public class RogaStandart : InterDop
     {
         private DopPerechisl _countRoga;
 

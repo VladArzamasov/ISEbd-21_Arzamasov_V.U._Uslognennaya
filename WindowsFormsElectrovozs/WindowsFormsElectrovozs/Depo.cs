@@ -10,7 +10,9 @@ namespace WindowsFormsElectrovozs
     public class Depo<T, D> where T : class, ITransport where D : class, InterDop
     {
         // Массив объектов, которые храним
-        private readonly T[] _places;
+        private readonly List<T> _places;
+        // Максимальное кол-во мест в депо
+        private readonly int _maxCount;
         // Ширина окна отрисовки
         private readonly int pictureWidth;
         // Высота окна отрисовки
@@ -24,7 +26,8 @@ namespace WindowsFormsElectrovozs
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
+            _places = new List<T>();
             pictureWidth = picWidth;
             pictureHeight = picHeight;
         }
@@ -32,17 +35,12 @@ namespace WindowsFormsElectrovozs
         // Логика действия: в депо добавляется поезд
         public static bool operator +(Depo<T, D> p, T train)
         {
-            for (int i = 0; i < p._places.Length; i++)
+            if (p._places.Count >= p._maxCount)
             {
-                if (p._places[i] == null)
-                {
-                    p._places[i] = train;
-                    p._places[i].SetPosition(i / 4 * p._placeSizeWidth + 7,
-                        i % 4 * p._placeSizeHeight + 4, p.pictureWidth, p.pictureHeight);
-                    return true;
-                }
+                return false;
             }
-            return false;
+            p._places.Add(train);
+            return true;
         }
         public static bool operator ==(Depo<T, D> d, int ind)
         {
@@ -55,7 +53,7 @@ namespace WindowsFormsElectrovozs
         private int CompareHelper()
         {
             int cnt = 0;
-            for (int i = 0; i < _places.Length; ++i)
+            for (int i = 0; i < _places.Count; ++i)
             {
                 if (_places[i] == null)
                 {
@@ -68,20 +66,22 @@ namespace WindowsFormsElectrovozs
         // Логика действия: из депо забираем поезд
         public static T operator -(Depo<T, D> p, int index)
         {
-            if (index < 0 || index >= p._places.Length)
+            if (index < -1 || index >= p._places.Count)
             {
                 return null;
             }
             T train = p._places[index];
-            p._places[index] = null;
+            p._places.RemoveAt(index);
             return train;
         }
         // Метод отрисовки депо
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
+                _places[i].SetPosition(i / 4 * _placeSizeWidth + 7, i % 4 *
+                    _placeSizeHeight + 4, pictureWidth, pictureHeight);
                 _places[i]?.DrawTransport(g);
             }
         }
@@ -98,6 +98,20 @@ namespace WindowsFormsElectrovozs
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth,
                (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
+            }
+        }
+        public T this[int ind]
+        {
+            get
+            {
+                if (ind > -1 && ind < _maxCount)
+                {
+                    return _places[ind];
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

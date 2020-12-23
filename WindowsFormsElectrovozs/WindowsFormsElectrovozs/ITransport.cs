@@ -15,5 +15,7 @@ namespace WindowsFormsElectrovozs
         void MoveTransport(Direction direction);
         // Отрисовка
         void DrawTransport(Graphics g);
+        // Смена основного цвета
+        void SetMainColor(Color color);
     }
 }

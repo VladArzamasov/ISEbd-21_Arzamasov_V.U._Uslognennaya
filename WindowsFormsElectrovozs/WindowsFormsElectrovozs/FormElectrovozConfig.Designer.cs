@@ -53,8 +53,14 @@
             this.labelOsnColor = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.groupBoxFormRoga = new System.Windows.Forms.GroupBox();
-            this.groupBoxNumberRoga = new System.Windows.Forms.GroupBox();
+            this.groupBoxRoga = new System.Windows.Forms.GroupBox();
+            this.labelRogaYstyle = new System.Windows.Forms.Label();
+            this.labelRogaXstyle = new System.Windows.Forms.Label();
+            this.labelRogaStandart = new System.Windows.Forms.Label();
+            this.labelThree = new System.Windows.Forms.Label();
+            this.labelTwo = new System.Windows.Forms.Label();
+            this.labelOne = new System.Windows.Forms.Label();
+            this.labelChangeRoga = new System.Windows.Forms.Label();
             this.groupBoxTypeTrain.SuspendLayout();
             this.groupBoxConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
@@ -62,6 +68,7 @@
             this.panelPicture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxElectrovoz)).BeginInit();
             this.groupBoxColor.SuspendLayout();
+            this.groupBoxRoga.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxTypeTrain
@@ -311,31 +318,113 @@
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // groupBoxFormRoga
+            // groupBoxRoga
             // 
-            this.groupBoxFormRoga.Location = new System.Drawing.Point(219, 441);
-            this.groupBoxFormRoga.Name = "groupBoxFormRoga";
-            this.groupBoxFormRoga.Size = new System.Drawing.Size(244, 117);
-            this.groupBoxFormRoga.TabIndex = 10;
-            this.groupBoxFormRoga.TabStop = false;
-            this.groupBoxFormRoga.Text = "Форма рогов";
+            this.groupBoxRoga.Controls.Add(this.labelRogaYstyle);
+            this.groupBoxRoga.Controls.Add(this.labelRogaXstyle);
+            this.groupBoxRoga.Controls.Add(this.labelRogaStandart);
+            this.groupBoxRoga.Controls.Add(this.labelThree);
+            this.groupBoxRoga.Controls.Add(this.labelTwo);
+            this.groupBoxRoga.Controls.Add(this.labelOne);
+            this.groupBoxRoga.Controls.Add(this.labelChangeRoga);
+            this.groupBoxRoga.Location = new System.Drawing.Point(12, 441);
+            this.groupBoxRoga.Name = "groupBoxRoga";
+            this.groupBoxRoga.Size = new System.Drawing.Size(521, 130);
+            this.groupBoxRoga.TabIndex = 10;
+            this.groupBoxRoga.TabStop = false;
+            this.groupBoxRoga.Text = "Рога";
             // 
-            // groupBoxNumberRoga
+            // labelRogaYstyle
             // 
-            this.groupBoxNumberRoga.Location = new System.Drawing.Point(23, 441);
-            this.groupBoxNumberRoga.Name = "groupBoxNumberRoga";
-            this.groupBoxNumberRoga.Size = new System.Drawing.Size(190, 117);
-            this.groupBoxNumberRoga.TabIndex = 11;
-            this.groupBoxNumberRoga.TabStop = false;
-            this.groupBoxNumberRoga.Text = "Кол-во рогов";
+            this.labelRogaYstyle.AllowDrop = true;
+            this.labelRogaYstyle.AutoSize = true;
+            this.labelRogaYstyle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelRogaYstyle.Location = new System.Drawing.Point(385, 92);
+            this.labelRogaYstyle.Name = "labelRogaYstyle";
+            this.labelRogaYstyle.Size = new System.Drawing.Size(119, 22);
+            this.labelRogaYstyle.TabIndex = 6;
+            this.labelRogaYstyle.Text = "Форма игрика";
+            this.labelRogaYstyle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelRogaForm_MouseDown);
+            // 
+            // labelRogaXstyle
+            // 
+            this.labelRogaXstyle.AllowDrop = true;
+            this.labelRogaXstyle.AutoSize = true;
+            this.labelRogaXstyle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelRogaXstyle.Location = new System.Drawing.Point(264, 92);
+            this.labelRogaXstyle.Name = "labelRogaXstyle";
+            this.labelRogaXstyle.Size = new System.Drawing.Size(102, 22);
+            this.labelRogaXstyle.TabIndex = 5;
+            this.labelRogaXstyle.Text = "Форма икса";
+            this.labelRogaXstyle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelRogaForm_MouseDown);
+            // 
+            // labelRogaStandart
+            // 
+            this.labelRogaStandart.AllowDrop = true;
+            this.labelRogaStandart.AutoSize = true;
+            this.labelRogaStandart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelRogaStandart.Location = new System.Drawing.Point(133, 92);
+            this.labelRogaStandart.Name = "labelRogaStandart";
+            this.labelRogaStandart.Size = new System.Drawing.Size(116, 22);
+            this.labelRogaStandart.TabIndex = 4;
+            this.labelRogaStandart.Text = "Стандартные";
+            this.labelRogaStandart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelRogaForm_MouseDown);
+            // 
+            // labelThree
+            // 
+            this.labelThree.AllowDrop = true;
+            this.labelThree.AutoSize = true;
+            this.labelThree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelThree.Location = new System.Drawing.Point(87, 72);
+            this.labelThree.Name = "labelThree";
+            this.labelThree.Size = new System.Drawing.Size(20, 22);
+            this.labelThree.TabIndex = 3;
+            this.labelThree.Text = "3";
+            this.labelThree.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelNumberRoga_MouseDown);
+            // 
+            // labelTwo
+            // 
+            this.labelTwo.AllowDrop = true;
+            this.labelTwo.AutoSize = true;
+            this.labelTwo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelTwo.Location = new System.Drawing.Point(44, 72);
+            this.labelTwo.Name = "labelTwo";
+            this.labelTwo.Size = new System.Drawing.Size(20, 22);
+            this.labelTwo.TabIndex = 2;
+            this.labelTwo.Text = "2";
+            this.labelTwo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelNumberRoga_MouseDown);
+            // 
+            // labelOne
+            // 
+            this.labelOne.AllowDrop = true;
+            this.labelOne.AutoSize = true;
+            this.labelOne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelOne.Location = new System.Drawing.Point(6, 72);
+            this.labelOne.Name = "labelOne";
+            this.labelOne.Size = new System.Drawing.Size(20, 22);
+            this.labelOne.TabIndex = 1;
+            this.labelOne.Text = "1";
+            this.labelOne.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LabelNumberRoga_MouseDown);
+            // 
+            // labelChangeRoga
+            // 
+            this.labelChangeRoga.AllowDrop = true;
+            this.labelChangeRoga.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelChangeRoga.Location = new System.Drawing.Point(11, 26);
+            this.labelChangeRoga.Name = "labelChangeRoga";
+            this.labelChangeRoga.Size = new System.Drawing.Size(423, 33);
+            this.labelChangeRoga.TabIndex = 0;
+            this.labelChangeRoga.Text = "Свойство рогов";
+            this.labelChangeRoga.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelChangeRoga.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelChangeRoga_DragDrop);
+            this.labelChangeRoga.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelChangeRoga_DragEnter);
             // 
             // FormElectrovozConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 583);
-            this.Controls.Add(this.groupBoxNumberRoga);
-            this.Controls.Add(this.groupBoxFormRoga);
+            this.Controls.Add(this.groupBoxRoga);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.groupBoxColor);
@@ -352,6 +441,8 @@
             this.panelPicture.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxElectrovoz)).EndInit();
             this.groupBoxColor.ResumeLayout(false);
+            this.groupBoxRoga.ResumeLayout(false);
+            this.groupBoxRoga.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -383,7 +474,13 @@
         private System.Windows.Forms.Label labelOsnColor;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.GroupBox groupBoxFormRoga;
-        private System.Windows.Forms.GroupBox groupBoxNumberRoga;
+        private System.Windows.Forms.GroupBox groupBoxRoga;
+        private System.Windows.Forms.Label labelRogaYstyle;
+        private System.Windows.Forms.Label labelRogaXstyle;
+        private System.Windows.Forms.Label labelRogaStandart;
+        private System.Windows.Forms.Label labelThree;
+        private System.Windows.Forms.Label labelTwo;
+        private System.Windows.Forms.Label labelOne;
+        private System.Windows.Forms.Label labelChangeRoga;
     }
 }
